@@ -20,7 +20,7 @@ import { fileURLToPath } from 'node:url';
 
 const APP_NAME = 'Grognard';
 const DEV_APP_NAME = 'Grognard.app';
-const DEV_BUNDLE_ID = 'fr.huma-num.grognard.dev';
+const DEV_BUNDLE_ID = 'fr.grognard.app.dev';
 
 if (process.platform !== 'darwin') {
   process.exit(0);
