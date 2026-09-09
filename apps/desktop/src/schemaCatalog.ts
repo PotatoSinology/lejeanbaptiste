@@ -98,7 +98,7 @@ export const SCHEMA_CATALOG: Record<string, SchemaCatalogEntry> = {
       'https://raw.githubusercontent.com/grognard-xml/plugins/main/packages/plugin-cbeta-import/data/schema/cbeta_p5.rng',
     ],
     cssUrls: [
-      'https://raw.githubusercontent.com/grognard-xml/leaf-writer/main/apps/desktop/resources/schema/cbeta.css',
+      'https://raw.githubusercontent.com/grognard-xml/grognard/main/apps/desktop/resources/schema/cbeta.css',
     ],
     localRngName: 'cbeta_p5.rng',
     localCssName: 'cbeta.css',

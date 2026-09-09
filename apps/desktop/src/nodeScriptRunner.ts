@@ -1,5 +1,5 @@
 /**
- * Shared helper for spawning bundled `authority extraction` Node scripts from
+ * Shared helper for spawning bundled `authoritypacks` Node scripts from
  * the Electron main process. Split out from authorityCompile.ts so that
  * authorityDatabases.ts can use it too without a circular import (authorityCompile.ts
  * already imports AUTHORITY_DB_DIRNAME from authorityDatabases.ts).
@@ -21,14 +21,14 @@ const RUN_TIMEOUT_MS = 30 * 60 * 1000;
 export const resolveAuthorityExtractionRoot = (marker = 'cbdb/compile.mjs'): string => {
   const candidates = [
     path.join(process.resourcesPath, 'authority-extraction'),
-    path.resolve(__dirname, '../../../../authority extraction'),
-    path.resolve(process.cwd(), '../authority extraction'),
+    path.resolve(__dirname, '../../../../authoritypacks'),
+    path.resolve(process.cwd(), '../authoritypacks'),
   ];
   for (const root of candidates) {
     if (fs.existsSync(path.join(root, marker))) return root;
   }
   throw new Error(
-    'Authority compile bundle not found. Install the authority extraction repo as a sibling of leaf-writer, or bundle it under resources/authority-extraction.',
+    'Authority compile bundle not found. Install the authoritypacks repo as a sibling of grognard, or bundle it under resources/authority-extraction.',
   );
 };
 
@@ -43,7 +43,7 @@ export const runNodeScript = async (
   const nodeModules = path.join(cwd, 'node_modules');
   if (!fs.existsSync(nodeModules)) {
     throw new Error(
-      `Run npm install in the authority extraction folder (${cwd}) before compiling.`,
+      `Run npm install in the authoritypacks folder (${cwd}) before compiling.`,
     );
   }
 

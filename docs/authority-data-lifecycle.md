@@ -2,7 +2,7 @@
 
 **Status:** Spec (revised 2026-08-01) — two-tier model; **CI-first pack delivery** for normal users; **A6 reference lookup** wired for person enrichment. Profiles: **`chinese`**, **`japanese`**, **`tibetan`**.
 
-**Related:** [authority-databases-phases.md](authority-databases-phases.md) (tracks A0–A6), [authority-databases-planning.md](authority-databases-planning.md) (field detail), [authority extraction/docs/phases.md](../../authority%20extraction/docs/phases.md) (compile + GitHub publish).
+**Related:** [authority-databases-phases.md](authority-databases-phases.md) (tracks A0–A6), [authority-databases-planning.md](authority-databases-planning.md) (field detail), [authoritypacks/docs/phases.md](../../authoritypacks/docs/phases.md) (compile + GitHub publish).
 
 **Scope:** **CBDB**, **DILA**, **Norbert**, and **CHGIS** under the Chinese profile; **NDL + Wikidata-ja** under Japanese; Wikidata-focused packs under Tibetan. CHGIS is a Tier 1 (pre-compiled pack) source folded into the `chinese` profile bundle; see [CHGIS](#chgis).
 
@@ -160,7 +160,7 @@ When the user turns **Enable** on:
 4. **Set** `lifecycle.json` → `enabled: true`.
 5. **Notify** on success. On pack failure, leave previous packs in place.
 
-**Dev / air-gap fallback:** `sync-authority-packs.mjs` or local compile from raw (`authority extraction` repo) — not the default user path.
+**Dev / air-gap fallback:** `sync-authority-packs.mjs` or local compile from raw (`authoritypacks` repo) — not the default user path.
 
 **Timing (order of magnitude):** Pack download ~100–300 MB (network-bound, no compile wait). Reference data ~685 MB additional if enabled.
 
@@ -194,18 +194,18 @@ Same as before: stop checks; confirm **Delete files** (both tiers) vs **Keep fil
 
 ---
 
-## GitHub pack registry (authority extraction)
+## GitHub pack registry (authoritypacks)
 
 **Decision (C3, 2026-07-05):** Pre-compiled packs built in **GitHub Actions**, not on user machines.
 
 **Pipeline (sketch):**
 
 1. Trigger: release tag, or manual pipeline when upstream pin / `policy.version` changes.
-2. Job: `npm run compile:cbdb && npm run compile:dila` in `authority extraction`.
+2. Job: `npm run compile:cbdb && npm run compile:dila` in `authoritypacks`.
 3. Artifact: `authority-packs-{version}.tar.gz` + root `packs-index.json` (version, policy, per-file sha256, licenses, attribution).
 4. Publish: commit generated `dist/` to the `authoritypacks` repo or attach GitHub Release assets with stable URLs for Grognard manifest check.
 
-Grognard desktop app **only downloads** this artifact for tier 1. Compile scripts remain in `authority extraction` for CI and local dev.
+Grognard desktop app **only downloads** this artifact for tier 1. Compile scripts remain in `authoritypacks` for CI and local dev.
 
 ---
 
@@ -229,9 +229,9 @@ Historical China **places** — complements CBDB places and DILA. See [authority
 
 | Aspect    | Status                                                                                                                                                                                                                                        |
 | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pack      | `authority-packs/chgis/places.ndjson`, compiled in `authority extraction` and shipped as part of the `chinese` profile bundle                                                                                                                 |
-| Delivery  | **Tier 1, pre-compiled** — same GitHub-release pack registry as CBDB/DILA/Wikidata. Compiled once locally by a maintainer per CHGIS version bump and checked into `authority extraction` via Git LFS (not compiled on the end user's machine) |
-| Crosswalk | CBDB `CHGIS_PT_ID` (exact-id match) and DILA (name+geo fuzzy match); both crosswalks are built once locally and checked in alongside the pack — see `authority extraction/chgis/README.md`                                                    |
+| Pack      | `authority-packs/chgis/places.ndjson`, compiled in `authoritypacks` and shipped as part of the `chinese` profile bundle                                                                                                                 |
+| Delivery  | **Tier 1, pre-compiled** — same GitHub-release pack registry as CBDB/DILA/Wikidata. Compiled once locally by a maintainer per CHGIS version bump and checked into `authoritypacks` via Git LFS (not compiled on the end user's machine) |
+| Crosswalk | CBDB `CHGIS_PT_ID` (exact-id match) and DILA (name+geo fuzzy match); both crosswalks are built once locally and checked in alongside the pack — see `authoritypacks/chgis/README.md`                                                    |
 | UI        | No dedicated CHGIS UI — folded into the generic offline-authorities block (`DesktopOfflineAuthorities`) and its manifest-driven attributions disclosure, same as every other pack source                                                      |
 
 ---

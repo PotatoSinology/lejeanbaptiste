@@ -251,7 +251,7 @@ authority resolved later via the Wikidata P2477 crosswalk.
 - **Formats:** Plain text, JSON/XML with **layout coordinates** and confidence ([Kotenseki OCR](https://github.com/ndl-lab/ndlkotenocr_cli), [Lite desktop app](https://github.com/ndl-lab/ndlkotenocr-lite)).
 - **Training data:** [Minna de Honkoku みんなで翻刻](https://github.com/ndl-lab/ndl-minhon-ocrdataset) (CC BY-SA) — crowd transcriptions used to train OCR.
 - **Extract:** NDL digital item id from URL → API or bundled OCR JSON → `<pb/>` from page boundaries; `@xml:lang="ja"` or `zh-Hant` for kanbun items.
-- **Authority overlap:** Track N in [authority extraction phases](../../authority%20extraction/docs/phases.md) (NDL person/place packs) — separate from text extraction but same ids may appear in `<idno>`.
+- **Authority overlap:** Track N in [authoritypacks phases](../../authoritypacks/docs/phases.md) (NDL person/place packs) — separate from text extraction but same ids may appear in `<idno>`.
 - **Adapter difficulty:** Medium (experimental API; coordinate → structure mapping).
 
 ### NIJL (国文学研究資料館) — classical Japanese databases

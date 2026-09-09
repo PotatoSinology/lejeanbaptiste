@@ -26,7 +26,7 @@ The appointment records deliberately omit year spans and biographical order.
 They are disambiguation clues, not yet TEI appointment/event encoding. The
 operational refresh and publication checklist lives in
 See [authority-extraction.md](authority-extraction.md) and the sibling
-[`authority extraction`](../../authority%20extraction/) repo for compile/publish
+[`authoritypacks`](../../authoritypacks/) repo for compile/publish
 pipelines and extraction TODOs.
 
 **Current handoff:** implementation is complete for this phase. Local build,

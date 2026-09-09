@@ -211,20 +211,20 @@ Wikidata distinguishes:
 
 ### Phase W0 — Dynasty & kind tables — **done (2026-07-05)**
 
-**Location:** [`authority extraction/wikidata/`](../../authority%20extraction/wikidata/) (sibling repo). See [authority-extraction.md](authority-extraction.md).
+**Location:** [`authoritypacks/wikidata/`](../../authoritypacks/wikidata/) (sibling repo). See [authority-extraction.md](authority-extraction.md).
 
 **Deliverables:**
 
-- [`dynasties.json`](../../authority%20extraction/wikidata/dynasties.json) — 23 period presets (Qin→PRC): Wikidata Q-id, CE year range, 漢字/English labels, DILA/CBDB aliases
-- [`kind-queries.json`](../../authority%20extraction/wikidata/kind-queries.json) — `P31` allowlists for person / place / org / work (+ exclusions)
-- [`languages.json`](../../authority%20extraction/wikidata/languages.json) — pack languages ↔ Grognard `zh-Hant` / `zh-Hans` / `ja` / … ↔ Wikidata label tags
-- [`validate.mjs`](../../authority%20extraction/wikidata/validate.mjs) — run from extraction repo: `npm run validate`
-- [`README.md`](../../authority%20extraction/wikidata/README.md) — how to edit and use the tables
+- [`dynasties.json`](../../authoritypacks/wikidata/dynasties.json) — 23 period presets (Qin→PRC): Wikidata Q-id, CE year range, 漢字/English labels, DILA/CBDB aliases
+- [`kind-queries.json`](../../authoritypacks/wikidata/kind-queries.json) — `P31` allowlists for person / place / org / work (+ exclusions)
+- [`languages.json`](../../authoritypacks/wikidata/languages.json) — pack languages ↔ Grognard `zh-Hant` / `zh-Hans` / `ja` / … ↔ Wikidata label tags
+- [`validate.mjs`](../../authoritypacks/wikidata/validate.mjs) — run from extraction repo: `npm run validate`
+- [`README.md`](../../authoritypacks/wikidata/README.md) — how to edit and use the tables
 
 **Validate:**
 
 ```bash
-cd "../authority extraction" && npm run validate
+cd "../authoritypacks" && npm run validate
 ```
 
 **Exit:** tables reviewed; Tang/Song/Ming/Qing and Northern/Southern Song included; validator passes.
@@ -270,12 +270,12 @@ Run parallel prototypes for: `zh-hans`, places (`P31` geographic + `zh-hant` lab
 
 ### Phase W2 — Dump-based extractor (1–2 weeks)
 
-**Status (2026-07-05):** Scripts live in **`authority extraction`** (`extract.mjs` + `compile.mjs`). Dump download in progress; work **paused** until it completes.  
-**→ Operator checklist:** [authority extraction/wikidata/README.md — When the dump download finishes](../../authority%20extraction/wikidata/README.md#when-the-dump-download-finishes)
+**Status (2026-07-05):** Scripts live in **`authoritypacks`** (`extract.mjs` + `compile.mjs`). Dump download in progress; work **paused** until it completes.  
+**→ Operator checklist:** [authoritypacks/wikidata/README.md — When the dump download finishes](../../authoritypacks/wikidata/README.md#when-the-dump-download-finishes)
 
 **Input:** [latest-all.json.bz2](https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.bz2) (~95 GiB compressed).
 
-**Tool:** `authority extraction/wikidata/extract.mjs` (or Python — stream parse).
+**Tool:** `authoritypacks/wikidata/extract.mjs` (or Python — stream parse).
 
 **Algorithm (streaming):**
 
@@ -425,7 +425,7 @@ The pack’s **`qindex.ndjson`** is the offline shortlist so you are not queryin
    Recommendation: exclude unless pack flag `includeFictional=true`.
 
 4. **Where build tools live?**  
-   Recommendation: [`authority extraction`](../../authority%20extraction/) sibling repo; CI builds packs on release tag only (not every commit). See [authority-extraction.md](authority-extraction.md) and [phases.md](../../authority%20extraction/docs/phases.md).
+   Recommendation: [`authoritypacks`](../../authoritypacks/) sibling repo; CI builds packs on release tag only (not every commit). See [authority-extraction.md](authority-extraction.md) and [phases.md](../../authoritypacks/docs/phases.md).
 
 5. **Overlap with CBDB packs?**  
    Recommendation: ship both; dedupe at disambiguation via shared Q-id / CBDB idno on Wikidata items ([~2k DILA↔Wikidata links](authority-databases-planning.md) show the pattern).

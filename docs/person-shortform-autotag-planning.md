@@ -201,4 +201,4 @@ Scope of keyed entities for Phase 2 seed: **active document / selection** for v1
 | `autoTagging/integration.ts`                   | Disambiguation `resolveMention` — Phase B link enrichment                           |
 | `autoTagging/lookupResolve.ts`                 | Attributes Lookup mint/link — pack `names[]` enrichment                             |
 | `autoTagging/ownDatabaseCandidates.ts`         | PEDB→candidates; ignores name types today                                           |
-| `authority extraction/cbdb/personAltNames.mjs` | `buildPersonNamesFromAlts`: 姓+字 in searchStrings; bare 字/名/姓 in `names[]` only |
+| `authoritypacks/cbdb/personAltNames.mjs` | `buildPersonNamesFromAlts`: 姓+字 in searchStrings; bare 字/名/姓 in `names[]` only |

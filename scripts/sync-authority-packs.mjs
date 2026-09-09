@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
- * Copy compiled NDJSON packs from authority extraction into the entity DB folder.
+ * Copy compiled NDJSON packs from authoritypacks into the entity DB folder.
  *
  * Usage:
  *   node scripts/sync-authority-packs.mjs [entityDbFolder]
  *
  * Default entity DB folder: read from leaf-writer test_project if present,
- * else ../authority extraction/packs as dry-run message only.
+ * else ../authoritypacks/packs as dry-run message only.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,7 +14,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
-const defaultSource = path.resolve(repoRoot, '../authority extraction/packs');
+const defaultSource = path.resolve(repoRoot, '../authoritypacks/packs');
 
 const packFiles = [
   'cbdb/persons.ndjson',
@@ -62,7 +62,7 @@ const destRoot = process.argv[2] ? path.resolve(process.argv[2], 'authority-pack
 if (!fs.existsSync(defaultSource)) {
   console.error(`Source packs not found: ${defaultSource}`);
   console.error(
-    'Run: cd "../authority extraction" && npm run compile:cbdb && npm run compile:dila',
+    'Run: cd "../authoritypacks" && npm run compile:cbdb && npm run compile:dila',
   );
   console.error(
     'Optional Wikidata: npm run wikidata:compile-all (Tang/Ming/Qing under packs/wikidata/)',

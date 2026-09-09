@@ -33,7 +33,7 @@ Active product TODOs live in the root [`readme.md`](../readme.md) (`## Waiting` 
 | [sanmiao-dates-schema.md](sanmiao-dates-schema.md)                           | East Asian date schema                               |
 | [entity-data-provenance.md](entity-data-provenance.md)                       | Entity `origin` / `source` / `status`                |
 | [entity-registry-merges-and-splits.md](entity-registry-merges-and-splits.md) | Merge / split behaviour                              |
-| [authority-extraction.md](authority-extraction.md)                           | Pointer to the sibling **authority extraction** repo |
+| [authority-extraction.md](authority-extraction.md)                           | Pointer to the sibling **authoritypacks** repo |
 
 ---
 

@@ -4,7 +4,7 @@
  * using a suffix gloss, so no pack lookup or LLM call is needed.
  *
  * Ported from the offline Huckbot5000 script
- * (`authority extraction/huckbot5000/proceduralPlaceSuffix.mjs`) so the same
+ * (`authoritypacks/huckbot5000/proceduralPlaceSuffix.mjs`) so the same
  * pattern applies live when a user tags a roleName the offline packs never
  * covered. Disambiguation stays conservative: institutional titles that
  * merely end in 令 (尚書令, 黃門令, …) are excluded via blocklists and stem

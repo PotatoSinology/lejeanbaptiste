@@ -72,7 +72,7 @@ export const schemas: Schema[] = [
       'https://raw.githubusercontent.com/grognard-xml/plugins/main/packages/plugin-cbeta-import/data/schema/cbeta_p5.rng',
     ],
     css: [
-      'https://raw.githubusercontent.com/grognard-xml/leaf-writer/main/apps/desktop/resources/schema/cbeta.css',
+      'https://raw.githubusercontent.com/grognard-xml/grognard/main/apps/desktop/resources/schema/cbeta.css',
     ],
   },
 ];

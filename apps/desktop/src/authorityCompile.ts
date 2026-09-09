@@ -1,5 +1,5 @@
 /**
- * Spawn authority extraction compile scripts against raw databases in the entity folder.
+ * Spawn authoritypacks compile scripts against raw databases in the entity folder.
  */
 
 import fs from 'node:fs';

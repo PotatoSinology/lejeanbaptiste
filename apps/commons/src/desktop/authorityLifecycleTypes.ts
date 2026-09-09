@@ -21,7 +21,7 @@ export interface AuthorityLifecyclePromptStrings {
   notNowButton: string;
 }
 
-/** Matches `policy.version` in compiled pack manifests (authority extraction). */
+/** Matches `policy.version` in compiled pack manifests (authoritypacks). */
 export const COMPILE_POLICY_VERSION = '2026-09-02';
 
 export const LIFECYCLE_FILENAME = 'lifecycle.json';

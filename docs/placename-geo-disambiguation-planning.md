@@ -83,7 +83,7 @@ Dependencies: Admin vocabulary (Phase A) → Coordinate source data fixes (Phase
 
 **Note:** this is independent research + mapping work, not code changes; unblocks Phase 0.
 
-**Status (2026-07-25): first-pass concordance built.** `/authority extraction/admin_type_concordance.tsv` maps all distinct CBDB `c_admin_type` values against CHGIS `TYPE_CH`/`TYPE_PY`, with columns `cbdb_admin_type, chgis_type_ch, chgis_type_py, cbdb_count, chgis_count, confidence, suffix_char, notes`.
+**Status (2026-07-25): first-pass concordance built.** `/authoritypacks/admin_type_concordance.tsv` maps all distinct CBDB `c_admin_type` values against CHGIS `TYPE_CH`/`TYPE_PY`, with columns `cbdb_admin_type, chgis_type_ch, chgis_type_py, cbdb_count, chgis_count, confidence, suffix_char, notes`.
 
 - 10 high-confidence 1:1 pairs (Xian↔縣, Zhou↔州, Fu↔府, Wei↔衛, Lu↔路, Ting↔廳, Zhangguansi↔長官司, Qianhusuo↔千戶所), case variants (Xian/xian etc.) listed as separate rows.
 - Ambiguous cases resolved to a primary mapping: Jun→郡 (commandery, over the rarer 軍 military-district reading), Fengjun→郡, State→國, Shi→市, Du left low-confidence (CHGIS fragments it into rare compounds).
@@ -92,7 +92,7 @@ Dependencies: Admin vocabulary (Phase A) → Coordinate source data fixes (Phase
 
 ### Wikidata as a fourth authority — current state (2026-07-25, verified in code)
 
-There's an existing, working Wikidata extraction pipeline at `/authority extraction/wikidata/` (`sparqlClient.mjs`, `entityParse.mjs`, `compile.mjs`, `compileKind.mjs`), following the same dump-extract → compiled-NDJSON-pack pattern as CBDB/CHGIS. Two things confirmed by direct inspection, correcting an earlier assumption:
+There's an existing, working Wikidata extraction pipeline at `/authoritypacks/wikidata/` (`sparqlClient.mjs`, `entityParse.mjs`, `compile.mjs`, `compileKind.mjs`), following the same dump-extract → compiled-NDJSON-pack pattern as CBDB/CHGIS. Two things confirmed by direct inspection, correcting an earlier assumption:
 
 - **Chinese Wikidata person packs:** `person-zh-hant-{pre-ming,ming,qing}` (+ optional `tang`). Song/Yuan people are in **pre-ming**, not separate song/yuan packs. Also `org-zh-hant`, `work-zh-hant`, and **`place-zh-hant`** (~254k). Japanese Wikidata places: **`place-ja`** (~514k), wired in Grognard as opt-in `wikidata-places-ja` (NDL places remain default). Older notes that claimed “no place-zh-hant” are obsolete.
 - **No crosswalk ids reach compiled place packs, even where a place pack exists.** `identifierProperties.json` and `identifierClaims.mjs` map Wikidata external-id properties (P497 → CBDB id, P4711 → CHGIS id, plus DILA/VIAF/BDRC) into `metadata.crosswalk` — but that machinery is wired only into the _person_ compile path (`compile.mjs`). The place/org/work compile path (`compileKind.mjs:19-45`, `kindCandidateFromRaw`) builds `metadata` from only `description`/`startYear`/`endYear` and never touches identifier claims. Confirmed empty in the one real sample: `place-bo/places.ndjson` records carry no `crosswalk` field at all.
@@ -107,7 +107,7 @@ There's an existing, working Wikidata extraction pipeline at `/authority extract
 
 Investigation found the gap was broader than just places: `compiledCrosswalkFromRaw()` (in `identifierClaims.mjs`, converts `raw.crosswalk` → `metadata.crosswalk`) was fully implemented and unit-tested but **never called from either compile path** — not `compile.mjs` (persons) nor `compileKind.mjs` (place/org/work). Raw extraction always captured crosswalk ids correctly (`P497`→cbdb, `P4711`→chgis, etc., per `identifierProperties.json`); they were silently dropped at compile time for every kind, not just places.
 
-Fixed in `authority extraction/wikidata/{compile.mjs,compileKind.mjs,identifierClaims.mjs}`:
+Fixed in `authoritypacks/wikidata/{compile.mjs,compileKind.mjs,identifierClaims.mjs}`:
 
 - Both compile paths now call `compiledCrosswalkFromRaw()` and attach the result to `metadata.crosswalk`.
 - Added a **disable-a-posteriori mechanism**, per your requirement: `compiledCrosswalkFromRaw(raw, { disableKeys: [...] })` drops named crosswalk keys (e.g. `chgis`) at compile time. This is a **recompile-time filter, not a re-extraction** — raw NDJSON always retains every crosswalk id captured during the (expensive, multi-hour) dump scan, so disabling or re-enabling a specific crosswalk source is just a cheap recompile with/without `--disable-crosswalk key1,key2`, never a re-scan of the dump.
@@ -121,7 +121,7 @@ Extracting real Chinese place data requires re-scanning the full Wikidata dump (
 
 ##### Instructions: extracting the zh-hant place pack
 
-Run from `/authority extraction`:
+Run from `/authoritypacks`:
 
 **1. Download the dump** (skip if you already have it from a prior extraction):
 
@@ -189,9 +189,9 @@ Fix the two CHGIS/CBDB coordinate issues before compilation. Both needed for val
 **0a. CHGIS county-layer CRS reprojection — implemented (2026-07-25)**
 
 - **Problem:** county points (`v6_time_cnty_pts_utf`, 10,520 records) are in Xian_1980_Gauss_Kruger_zone_19 (projected CRS, meter-scale coordinates like `{lat: 4319886.6, lon: 19506884.1}`), but `pointLatLon()` read them raw without reprojection, mislabeling them as WGS84. Prefecture points (`v6_time_pref_pts_utf_wgs84`, 5,226 records) are already WGS84 and correct.
-- **Fix, as built:** added `proj4` dependency (`authority extraction/package.json`). New module `chgis/crs.mjs` holds a `LAYER_CRS` registry keyed by shapefile basename — currently only `v6_time_cnty_pts_utf` maps to the Gauss-Krüger proj4 string; any other layer (including the prefecture layer) passes through unchanged. `chgis/parseShapefile.mjs`'s `iterateShapefileRows()` now derives the layer name from the `.shp` path, reprojects only when `layerNeedsReprojection()` says so, and validates the result with `isValidWgs84()` before attaching `row.lat`/`row.lon` — out-of-bounds points are dropped (not silently kept) and logged with a count via `console.warn`, rather than crashing or shipping bad coordinates. `placeFromChgisRow` (`compileRecords.mjs`) needed no changes — it already only reads pre-extracted `row.lat`/`row.lon`.
+- **Fix, as built:** added `proj4` dependency (`authoritypacks/package.json`). New module `chgis/crs.mjs` holds a `LAYER_CRS` registry keyed by shapefile basename — currently only `v6_time_cnty_pts_utf` maps to the Gauss-Krüger proj4 string; any other layer (including the prefecture layer) passes through unchanged. `chgis/parseShapefile.mjs`'s `iterateShapefileRows()` now derives the layer name from the `.shp` path, reprojects only when `layerNeedsReprojection()` says so, and validates the result with `isValidWgs84()` before attaching `row.lat`/`row.lon` — out-of-bounds points are dropped (not silently kept) and logged with a count via `console.warn`, rather than crashing or shipping bad coordinates. `placeFromChgisRow` (`compileRecords.mjs`) needed no changes — it already only reads pre-extracted `row.lat`/`row.lon`.
 - **Verified:** `chgis/crs.test.mjs` (new) reprojects the exact bad sample value from the audit (`{lat: 4319886.6, lon: 19506884.1}`) and confirms it now lands in valid China bounds (lon 73–135°E, lat 18–53°N). Full `chgis/*.test.mjs` suite passes (11 pass, 1 skipped — the real-shapefile integration test, which requires the actual `.shp` files that aren't on this machine).
-- **Not yet verified against real data.** The `.shp`/`.prj` files live only on the machine where CHGIS gets downloaded/compiled (per the existing README workflow, `~/Downloads/chgis_layers/` → `npm run compile:chgis`) — **you'll need to recompile CHGIS yourself and confirm the county layer's coordinates land correctly**. Step-by-step smoke test: `authority extraction/chgis/SMOKE_TEST.md` (compile-log warning check, bulk bounds check script, `PRES_LOC` spot-checks, cross-check against the already-correct prefecture layer). If it's still wrong, the Gauss-Krüger proj4 string in `crs.mjs` is the first thing to re-check against the real `.prj` sidecar.
+- **Not yet verified against real data.** The `.shp`/`.prj` files live only on the machine where CHGIS gets downloaded/compiled (per the existing README workflow, `~/Downloads/chgis_layers/` → `npm run compile:chgis`) — **you'll need to recompile CHGIS yourself and confirm the county layer's coordinates land correctly**. Step-by-step smoke test: `authoritypacks/chgis/SMOKE_TEST.md` (compile-log warning check, bulk bounds check script, `PRES_LOC` spot-checks, cross-check against the already-correct prefecture layer). If it's still wrong, the Gauss-Krüger proj4 string in `crs.mjs` is the first thing to re-check against the real `.prj` sidecar.
 - **Note:** Xian 1980 datum transformation is approximate (`+towgs84=0,0,0`, no real datum-shift parameters known/published), adequate for county-level clustering at ~5 km threshold, not survey-grade.
 
 **0b. CBDB coordinate extraction — implemented (2026-07-25)**

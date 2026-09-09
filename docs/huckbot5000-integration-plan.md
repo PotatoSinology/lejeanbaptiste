@@ -9,7 +9,7 @@ includes `huckbot5000/`, then reinstall chinese packs in the app.
 full experimental history, numbers, and evidence behind every claim below lives in
 [huckbot5000-planning.md](huckbot5000-planning.md); this doc doesn't repeat that detail, it
 points to it. Pipeline mechanics:
-[`authority extraction/huckbot5000/README.md`](../../authority%20extraction/huckbot5000/README.md).
+[`authoritypacks/huckbot5000/README.md`](../../authoritypacks/huckbot5000/README.md).
 
 ---
 
@@ -61,7 +61,7 @@ Two data sources need this, not one, and they don't cleanly line up:
 
 ### Production pipeline — ready for full LLM run
 
-Scripts in `authority extraction/huckbot5000/` (see that README for commands):
+Scripts in `authoritypacks/huckbot5000/` (see that README for commands):
 
 | Stage             | What                                                                                                 |
 | ----------------- | ---------------------------------------------------------------------------------------------------- |
@@ -133,13 +133,13 @@ then `npm run audit:huckbot5000`. Expect ~3–4 hours at ~1 call/s.
 
 1. **`authoritypacks` release cut** — ship Hucker-omitted CBDB offices + Huckbot
    translations in the chinese tarball; reinstall packs in the app.
-2. **Commit/push** pipeline code in `authority extraction` and leaf-writer wiring.
+2. **Commit/push** pipeline code in `authoritypacks` and leaf-writer wiring.
 3. Expanding `parentOf` allowlist beyond `太子`/`公主`/`親王` once non-Hucker compounds prove out.
 4. Dating the remaining ~15k Norbert offices (expands targets later; does not invalidate this run).
 5. **MaxiRicci7000** — GPT-4o French pack: Batch A = full Hucker OCR entries + Rotours
    (`RR:`) seeds; Batch B = CBDB/Huckbot offices absent from Hucker, retrieved against
    Batch A French. Scaffolding:
-   [`authority extraction/maxiricci7000/`](../../authority%20extraction/maxiricci7000/README.md).
+   [`authoritypacks/maxiricci7000/`](../../authoritypacks/maxiricci7000/README.md).
    Owner policy: AI French is treated as redistributable (`source: MaxiRicci7000`); English
    Huckbot collision-archive rules unchanged. Batch B benefits from reviewed Huckbot includes.
 
@@ -161,4 +161,4 @@ then `npm run audit:huckbot5000`. Expect ~3–4 hours at ~1 call/s.
 ## Reference
 
 Full detail, all numbers, every experiment: [huckbot5000-planning.md](huckbot5000-planning.md).  
-Pipeline how-to: [`authority extraction/huckbot5000/README.md`](../../authority%20extraction/huckbot5000/README.md).
+Pipeline how-to: [`authoritypacks/huckbot5000/README.md`](../../authoritypacks/huckbot5000/README.md).

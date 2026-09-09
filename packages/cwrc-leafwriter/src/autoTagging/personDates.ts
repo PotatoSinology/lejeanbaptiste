@@ -9,7 +9,7 @@
  *   - nationality → dynasty spans for filter fallback only
  *   - dynasties[] → pack-native dynasty spans when nationality has no years
  *
- * Mirrors `authority extraction/shared/personDates.mjs`.
+ * Mirrors `authoritypacks/shared/personDates.mjs`.
  */
 
 export type PersonDateSource = 'fine' | 'floruit' | 'index' | 'nationality';

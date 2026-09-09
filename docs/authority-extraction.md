@@ -1,11 +1,11 @@
 # Authority extraction (sibling repo)
 
-Pack **build pipelines** (extract → compile → publish) live in the separate **`authority extraction`** workspace, not in this repo.
+Pack **build pipelines** (extract → compile → publish) live in the separate **`authoritypacks`** workspace, not in this repo.
 
 | Resource                                                | Location                                                                             |
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| Master phases (all sources, human checkpoints)          | [`authority extraction/docs/phases.md`](../../authority%20extraction/docs/phases.md) |
-| Wikidata config + validator (W0 done)                   | [`authority extraction/wikidata/`](../../authority%20extraction/wikidata/)           |
+| Master phases (all sources, human checkpoints)          | [`authoritypacks/docs/phases.md`](../../authoritypacks/docs/phases.md) |
+| Wikidata config + validator (W0 done)                   | [`authoritypacks/wikidata/`](../../authoritypacks/wikidata/)           |
 | Strategy & source research                              | [authority-packs-planning.md](authority-packs-planning.md)                           |
 | Wikidata design detail                                  | [wikidata-tag-packs-planning.md](wikidata-tag-packs-planning.md)                     |
 | Grognard download + tag bomb + lifecycle (tracks A0–A6) | [authority-databases-phases.md](authority-databases-phases.md)                       |
@@ -14,7 +14,7 @@ Pack **build pipelines** (extract → compile → publish) live in the separate 
 Validate Wikidata tables from the extraction repo:
 
 ```bash
-cd "../authority extraction"
+cd "../authoritypacks"
 npm run validate
 ```
 

@@ -367,7 +367,7 @@ Can appear inside `<item>`, `<p>`, `<lem>`.
   `cbeta-metadata/work-info` + DILA `Authority-Databases` (keyed by work
   id), `@role` from `cb:type`, `@ref`/`@key` to Norbert/DILA authority
   when the id is present — plain text otherwise. We already mirror DILA
-  authority in `authority extraction/dila`.
+  authority in `authoritypacks/dila`.
 - Do **not** parse the byline string itself at import — use the metadata
   join. (The API byline parser is a build-time check only.)
 

@@ -10,7 +10,7 @@ Phase 4 of [entity-display-translations-planning.md](entity-display-translations
 **For current status, queue sizes, and next actions, see
 [huckbot5000-integration-plan.md](huckbot5000-integration-plan.md) — that's the doc to read
 first.** This one is the detailed experimental log/evidence behind it. Pipeline mechanics:
-[`authority extraction/huckbot5000/README.md`](../../authority%20extraction/huckbot5000/README.md).
+[`authoritypacks/huckbot5000/README.md`](../../authoritypacks/huckbot5000/README.md).
 
 **Resume here.** See [Next up](#next-up) at the bottom for the current punch list.
 
@@ -25,7 +25,7 @@ ship? Gap-fill for blanks; collision filter for anything that matches known Huck
 
 ## Source data
 
-`~/Code/leJeanBaptiste/authority extraction/skunkworks/scripts/out/hucker_entries.ndjson` —
+`~/Code/leJeanBaptiste/authoritypacks/skunkworks/scripts/out/hucker_entries.ndjson` —
 9,619 OCR-extracted entries, fields `chinese / dynasty / translation_title / translation_full`.
 
 After filtering to CJK headwords with a real title (dropping `variant of`, `abbreviation of`,
@@ -216,7 +216,7 @@ Proposed shape, in dependency order:
 
 ## Repo & architecture (decided 2026-08-06)
 
-**Lives in `authority extraction`** (git remote `authoritypacks`), not `leaf-writer` or
+**Lives in `authoritypacks`** (git remote `authoritypacks`), not `leaf-writer` or
 `plugins` directly — every other China-specific source (CBDB, DILA, Norbert, CHGIS) is a build
 track in that repo, compiled to `packs/*`, published as GitHub release assets, consumed
 downstream. Huckbot5000 is another track of the same kind, alongside `packs/norbert/`.
@@ -269,7 +269,7 @@ entries, compiled from CBDB's own SQL dump) has a `translation` field, and **2,3
 those entries end in the literal string "(Hucker)"**. Audit result: **this is
 verbatim/near-verbatim copying, and the currently-shipped pack needs remediation.**
 
-- **Source confirmed:** [cbdb/compileRecords.mjs:377](../../authority%20extraction/cbdb/compileRecords.mjs:377)
+- **Source confirmed:** [cbdb/compileRecords.mjs:377](../../authoritypacks/cbdb/compileRecords.mjs:377)
   pipes CBDB's `OFFICE_CODES.c_office_trans` straight through, untransformed. The `(Hucker)`
   suffix is CBDB's own citation marker in their upstream data, not something our compile step adds.
 - **Similarity, sampled (n=30, seeded):** 80% verbatim substring match against Hucker's full
@@ -321,7 +321,7 @@ above. Audit complete.
 
 ## Reproducing
 
-Fix location: `authority extraction/skunkworks/scripts/parse_entries.py`
+Fix location: `authoritypacks/skunkworks/scripts/parse_entries.py`
 (`fix_dynasty_ocr_glyphs`, widened `TAG_RE`) — run `python3 parse_entries.py` from
 `skunkworks/scripts/` to regenerate `out/hucker_entries.ndjson` against the current PDF
 extraction (`extract_lines.py` output, unchanged).
@@ -364,7 +364,7 @@ piecemeal, and not automatically (publish action on shared state).
    actual gap was `build-reference-bundle.mjs` repackaging that into our own GitHub release.
    Fixed in `leaf-writer`: new `downloadCbdbDirect()` in `apps/desktop/src/authorityDatabases.ts`
    fetches CBDB's official release directly (same HuggingFace URL/pin) and strips it locally via
-   the bundled `authority extraction` CLI (`cbdb/stripReferenceDb.mjs` — reused as-is, the exact
+   the bundled `authoritypacks` CLI (`cbdb/stripReferenceDb.mjs` — reused as-is, the exact
    script the build pipeline itself runs, not a reimplementation) using the existing
    `resolveAuthorityExtractionRoot`/`runNodeScript` pattern already used for on-device compiling.
    Split out into a new `nodeScriptRunner.ts` module to avoid a circular import with
@@ -396,7 +396,7 @@ piecemeal, and not automatically (publish action on shared state).
    shared state (yanking or superseding a release asset) — bundle with item 1's pending release
    cut rather than act on it separately.
 3. ~~Re-mine the morpheme lexicon against the cleaned extraction~~ **Done (2026-08-06).**
-   `authority extraction/huckbot5000/compile.mjs` (new, matches the `compile:norbert`/`compile:cbdb`
+   `authoritypacks/huckbot5000/compile.mjs` (new, matches the `compile:norbert`/`compile:cbdb`
    convention) → `npm run compile:huckbot5000` → 615 morphemes (272 high-confidence) from 5,894
    source pairs, written to `packs/huckbot5000/lexicon.ndjson` + manifest (gitignored, matching
    other compiled packs; `license: 'internal-pending-review'` — not marked shippable, see Legal note).
@@ -478,7 +478,7 @@ piecemeal, and not automatically (publish action on shared state).
    rows during entity tagging — exactly Phase 3's requirement. Correction to earlier text in this
    doc, which wrongly said "not started."
 6. **Collision-filter + human-review pipeline — built (2026-08-06).** Five scripts in
-   `authority extraction/huckbot5000/`, mirroring the `noble-titles/` reviewed-boundary pattern:
+   `authoritypacks/huckbot5000/`, mirroring the `noble-titles/` reviewed-boundary pattern:
    `generate.mjs` (GPT-4o + retrieval, production port of `openai_harness.py`, targets CBDB's
    12,704 untranslated office headwords by default, `--sample`/`--limit`/`--dry-run`/`--resume`),
    `audit.mjs` (collision filter → `reports/huckbot5000-candidate-review.csv`),

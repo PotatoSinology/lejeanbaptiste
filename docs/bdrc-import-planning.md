@@ -189,7 +189,7 @@ Consistent with [cbeta-import-planning.md](cbeta-import-planning.md) §5.8 and
 - At import, every `bdr:P…` / `bdr:G…` from the metadata becomes an `@ref` to
   the purl. No name lookup, no pack join.
 - A later authority pass resolves `@ref` → Norbert/Wikidata via the P2477
-  crosswalk already compiled in `authority extraction/` (2026-08 extract:
+  crosswalk already compiled in `authoritypacks/` (2026-08 extract:
   23,266 `bdrc` pairs). Unmatched ids stay as bare purls — re-checkable.
 - Place ids feed the same pipeline as
   [placename-geo-disambiguation-planning.md](placename-geo-disambiguation-planning.md);

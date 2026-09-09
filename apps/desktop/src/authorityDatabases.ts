@@ -59,7 +59,7 @@ const NORBERT_REFERENCE_VERSION = '2026-07-25-reduced-authority';
 /**
  * CBDB's own official release (HuggingFace), fetched directly rather than
  * through a copy we repackage and redistribute via our own GitHub release.
- * Keep this pin in sync with `authority extraction/upstream/pins.json`'s
+ * Keep this pin in sync with `authoritypacks/upstream/pins.json`'s
  * `cbdb` entry when CBDB publishes a new version — that repo's
  * `fetch-upstream.mjs` pulls from the same URL for the build pipeline.
  */
@@ -339,7 +339,7 @@ const writeSourceManifest = async (baseDir: string, manifest: AuthorityManifest)
  * bundled into this same zip; it now downloads independently (see
  * downloadCbdbDirect below) so this app is never the one redistributing a
  * repackaged copy of CBDB's own data. Norbert has no equivalent concern —
- * its license ("internal-derived-public", see authority extraction's
+ * its license ("internal-derived-public", see authoritypacks's
  * upstream/pins.json) is our own reduced-authority export, not a third
  * party's copyrighted compilation.
  */
@@ -426,7 +426,7 @@ export const downloadNorbertReferenceBundle = async (
 
 /**
  * Fetch CBDB's own official release directly (HuggingFace, pinned above —
- * the same source authority extraction's build pipeline uses) and strip it
+ * the same source authoritypacks's build pipeline uses) and strip it
  * locally to a person+office reference subset via the bundled
  * authority-extraction CLI (cbdb/stripReferenceDb.mjs — the exact script the
  * build pipeline itself runs; not a reimplementation). This app never holds
@@ -436,7 +436,7 @@ export const downloadNorbertReferenceBundle = async (
  * CBDB's upstream OFFICE_CODES table embeds some office-title glosses that
  * CBDB itself cites as "(Hucker)" — see leaf-writer/docs/huckbot5000-planning.md.
  * Publishable *tagging* packs omit those fields before redistribution
- * (authority extraction/cbdb/compileRecords.mjs). This reference sqlite is a
+ * (authoritypacks/cbdb/compileRecords.mjs). This reference sqlite is a
  * table-subset of CBDB's official release as installed for the user: office
  * translations are left intact so Grognard can display what CBDB publishes. Nothing
  * here is re-packaged into our GitHub pack assets.
@@ -479,7 +479,7 @@ export const downloadCbdbDirect = async (
       throw new Error(
         `CBDB sqlite checksum mismatch (got ${fullDigest}, expected ${CBDB_OFFICIAL_SQLITE_SHA256}). ` +
           'Upstream may have published a new version — update the pin here and in ' +
-          'authority extraction/upstream/pins.json together.',
+          'authoritypacks/upstream/pins.json together.',
       );
     }
 

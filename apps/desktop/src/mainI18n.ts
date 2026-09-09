@@ -45,7 +45,7 @@ const STRINGS = {
     cancel: 'Cancel',
     choose_authority_packs_folder_title: 'Choose compiled authority packs folder',
     choose_authority_packs_folder_message:
-      'Select the folder that contains cbdb/ and dila/ (e.g. authority extraction/packs).',
+      'Select the folder that contains cbdb/ and dila/ (e.g. authoritypacks/packs).',
     downloading_language_tool: 'Downloading LanguageTool…',
     extracting_language_tool: 'Extracting LanguageTool…',
     language_tool_installed: 'LanguageTool installed.',
@@ -98,7 +98,7 @@ const STRINGS = {
     cancel: 'Annuler',
     choose_authority_packs_folder_title: 'Choisir le dossier des packs d’autorité compilés',
     choose_authority_packs_folder_message:
-      'Sélectionnez le dossier contenant cbdb/ et dila/ (par exemple authority extraction/packs).',
+      'Sélectionnez le dossier contenant cbdb/ et dila/ (par exemple authoritypacks/packs).',
     downloading_language_tool: 'Téléchargement de LanguageTool…',
     extracting_language_tool: 'Extraction de LanguageTool…',
     language_tool_installed: 'LanguageTool installé.',

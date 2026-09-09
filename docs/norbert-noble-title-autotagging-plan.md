@@ -5,7 +5,7 @@
 ## Reviewed noble-title filter
 
 The authority-extraction review table
-`authority extraction/reports/noble-title-authority-review.csv` is the curation
+`authoritypacks/reports/noble-title-authority-review.csv` is the curation
 source. Its accepted rows are compiled into the `noble-title-filter` authority
 pack. Deferred and rejected rows are not loaded as title rules.
 

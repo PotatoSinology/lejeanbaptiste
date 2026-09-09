@@ -52,7 +52,7 @@ Smallest piece, unblocks everything else.
 
 ## Phase A2 — Compile step — **partial (pre-compiled packs, 2026-07-05)**
 
-Compile runs in the sibling [`authority extraction`](../../authority%20extraction/) repo (`npm run compile:cbdb`, `compile:dila`). Grognard **loads** NDJSON from `<entityDbFolder>/authority-packs/`.
+Compile runs in the sibling [`authoritypacks`](../../authoritypacks/) repo (`npm run compile:cbdb`, `compile:dila`). Grognard **loads** NDJSON from `<entityDbFolder>/authority-packs/`.
 
 **Built:**
 
@@ -76,7 +76,7 @@ cd leaf-writer && node scripts/sync-authority-packs.mjs /path/to/entityDbFolder
 - [x] Date-filtered memory profile: tag-bomb peak fell from about 1.1 GB to 236 MB after uncaching one-shot pack reads
 - [ ] Progress / memory profile on full 659k-person load without a date filter
 
-**Done when:** each downloaded source yields NDJSON artifacts; a golden test compiles a fixture slice of each source and snapshots the candidates (including clue lines). → **Met via authority extraction tests + packLoader tests.**
+**Done when:** each downloaded source yields NDJSON artifacts; a golden test compiles a fixture slice of each source and snapshots the candidates (including clue lines). → **Met via authoritypacks tests + packLoader tests.**
 
 ## Phase A3 — Matcher integration at scale
 
@@ -164,12 +164,12 @@ cd leaf-writer && node scripts/sync-authority-packs.mjs /path/to/entityDbFolder
 
 ## Phase H — CHGIS
 
-Historical place pack + **local-only** delivery (Dataverse EULA — no GitHub redistribution). Compile track in `authority extraction` (`chgis/compile.mjs`); Grognard **Settings → Authorities → Install from download…** (`authorityChgis.ts`).
+Historical place pack + **local-only** delivery (Dataverse EULA — no GitHub redistribution). Compile track in `authoritypacks` (`chgis/compile.mjs`); Grognard **Settings → Authorities → Install from download…** (`authorityChgis.ts`).
 
 ## Deferred / future
 
-- Wikipedia/VIAF/Wikidata: not a match source at tag time — use **authority packs** built in the [`authority extraction`](../../authority%20extraction/) repo (see [authority-extraction.md](authority-extraction.md), [phases.md](../../authority%20extraction/docs/phases.md)). VIAF/Wikidata idnos remain Phase 4b reconciliation when minting entities.
-- **VIAF↔Wikidata precompiled concordance** — **Grognard wired (2026-08-02):** disambiguation loads pack id `wikidata-viaf-concordance` (`wikidata/viaf-wikidata-concordance.ndjson`) and enriches live candidates before collapse; pack match rows also emit `metadata.crosswalk` VIAF/Wikidata ids. Regex scraping of LINCS descriptions remains a fallback. **Still to publish:** re-extract Wikidata person packs so raw rows carry P214, recompile, run `npm run wikidata:viaf-concordance` in the authority-extraction repo, and ship the NDJSON in the pack bundle (instructions: [authority extraction README](../../authority%20extraction/README.md)).
+- Wikipedia/VIAF/Wikidata: not a match source at tag time — use **authority packs** built in the [`authoritypacks`](../../authoritypacks/) repo (see [authority-extraction.md](authority-extraction.md), [phases.md](../../authoritypacks/docs/phases.md)). VIAF/Wikidata idnos remain Phase 4b reconciliation when minting entities.
+- **VIAF↔Wikidata precompiled concordance** — **Grognard wired (2026-08-02):** disambiguation loads pack id `wikidata-viaf-concordance` (`wikidata/viaf-wikidata-concordance.ndjson`) and enriches live candidates before collapse; pack match rows also emit `metadata.crosswalk` VIAF/Wikidata ids. Regex scraping of LINCS descriptions remains a fallback. **Still to publish:** re-extract Wikidata person packs so raw rows carry P214, recompile, run `npm run wikidata:viaf-concordance` in the authority-extraction repo, and ship the NDJSON in the pack bundle (instructions: [authoritypacks README](../../authoritypacks/README.md)).
 - Web-app support (databases are desktop-filesystem for now).
 - DILA `ana` values other than `historical` — flag mythical/uncertain in the clue?
 - Other authority sources behind the same source-manifest interface (Korean sets à la Markus, local gazetteers).
