@@ -1,6 +1,6 @@
 <img src=".github/splash.png" alt="Grognard — XML avec du corps" width="600">
 
-Grognard is a desktop XML markup editor forked from the in-browser tool [LEAF-Writer](https://leaf-writer.leaf-vre.org/), part of [The Linked Editing Academic Framework](https://www.leaf-vre.org/) (LEAF) tool suite. LEAF-Writer is an enhancement of the CWRC-Writer developed by the [Canadian Writing Research Collaboratory (CWRC)](https://cwrc.ca), and was developed alongside the [Named Entity Recognition Vetting Environment](https://nerve.lincsproject.ca/en) (NERVE). The project website is [github.com/grognard/grognard](https://github.com/grognard/grognard). Grognard wraps the web app in Electron for offline, individual desktop use and includes workflow changes aimed particularly at local editing and East Asian documents.
+Grognard is a desktop XML markup editor forked from the in-browser tool [LEAF-Writer](https://leaf-writer.leaf-vre.org/), part of [The Linked Editing Academic Framework](https://www.leaf-vre.org/) (LEAF) tool suite. LEAF-Writer is an enhancement of the CWRC-Writer developed by the [Canadian Writing Research Collaboratory (CWRC)](https://cwrc.ca), and was developed alongside the [Named Entity Recognition Vetting Environment](https://nerve.lincsproject.ca/en) (NERVE). The project website is [github.com/grognard-xml/grognard](https://github.com/grognard-xml/grognard). Grognard wraps the web app in Electron for offline, individual desktop use and includes workflow changes aimed particularly at local editing and East Asian documents.
 
 AGPL-3.0 · [Commitizen friendly](http://commitizen.github.io/cz-cli/)
 
@@ -47,7 +47,7 @@ Grognard is the desktop, offline-first fork of LEAF-Writer. The current build al
 
 ## Install
 
-Download the installer for your platform from the [latest release](https://github.com/grognard/grognard/releases/latest). All release assets can be verified as described in [SECURITY.md](SECURITY.md).
+Download the installer for your platform from the [latest release](https://github.com/grognard-xml/grognard/releases/latest). All release assets can be verified as described in [SECURITY.md](SECURITY.md).
 
 ### macOS
 
@@ -69,11 +69,11 @@ Download the installer for your platform from the [latest release](https://githu
 
 ```bash
 # Add the repository signing key
-wget -qO- https://grognard.github.io/grognard/apt/grognard-archive-key.asc \
+wget -qO- https://grognard-xml.github.io/grognard/apt/grognard-archive-key.asc \
   | sudo tee /usr/share/keyrings/grognard.asc > /dev/null
 
 # Add the repository to your sources
-echo "deb [signed-by=/usr/share/keyrings/grognard.asc] https://grognard.github.io/grognard/apt stable main" \
+echo "deb [signed-by=/usr/share/keyrings/grognard.asc] https://grognard-xml.github.io/grognard/apt stable main" \
   | sudo tee /etc/apt/sources.list.d/grognard.list > /dev/null
 
 # Install and keep updated
@@ -105,7 +105,7 @@ For detailed build and packaging information, see [apps/desktop/README.md](apps/
 
 The **Grognard corpus import** browser extension lets you send the current **Wikisource**, **Kanripo**, or **BDRC** page straight to Grognard with one click. It is optional: you can always import the same sources from inside Grognard with **File → Import from URL…** (paste the page address). The extension is only a shortcut from the browser toolbar.
 
-Extension zips are attached to the **same [GitHub release](https://github.com/grognard/grognard/releases/latest)** as the desktop installers — look for:
+Extension zips are attached to the **same [GitHub release](https://github.com/grognard-xml/grognard/releases/latest)** as the desktop installers — look for:
 
 - `grognard-browser-extension-chromium-<version>.zip` — Chrome, Brave, Edge, and other Chromium browsers
 - `grognard-browser-extension-firefox-<version>.zip` — Firefox
@@ -173,7 +173,7 @@ Grognard should receive the import dialog for that source. More detail on what e
 | **Import** does nothing or says it cannot connect | Quit and reopen Grognard so the native host is registered again. Confirm Grognard is running before you click Import.                                                                                 |
 | Extension missing after browser update            | Reload the unpacked folder (Chromium) or load the temporary add-on again (Firefox).                                                                                                                   |
 | Wrong or empty import                             | Check the URL matches the supported patterns above; use **File → Import from URL…** in Grognard with the same link to compare.                                                                        |
-| SmartScreen or security warning                   | The extension is not from a store; you install it manually from the Grognard release. Only download zips from [github.com/grognard/grognard/releases](https://github.com/grognard/grognard/releases). |
+| SmartScreen or security warning                   | The extension is not from a store; you install it manually from the Grognard release. Only download zips from [github.com/grognard-xml/grognard/releases](https://github.com/grognard-xml/grognard/releases). |
 
 ## Entity database — cloud backup and multi-machine sync
 

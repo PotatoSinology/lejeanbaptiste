@@ -1,5 +1,5 @@
 name: CI
-run-name: CI for grognard/grognard
+run-name: CI for grognard-xml/grognard
 
 on:
   push:

@@ -90,7 +90,7 @@ interface AchievementsDialogProps {
 }
 
 // Verifies the player's GitHub identity, rate-limits, and publishes
-// scores.json to grognard/scoreboard - see that repo's worker/
+// scores.json to grognard-xml/scoreboard - see that repo's worker/
 // directory. Superseded the Phase 1 copy-paste-into-a-GitHub-issue flow.
 const LEADERBOARD_WORKER_URL = 'https://grognard-leaderboard.grognard.workers.dev';
 // A hover-preview thumbnail on the leaderboard page, not the certificate's

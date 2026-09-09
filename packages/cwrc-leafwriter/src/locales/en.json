@@ -324,7 +324,7 @@
         "leaderboard_title": "Leaderboard submission",
         "leaderboard_body": "If you choose to participate in the leaderboard, Grognard sends the information needed to associate your progress with your verified GitHub identity and display a leaderboard entry. The exact indicators may evolve. Your text, XML files, and entity database are not sent.",
         "telemetry_title": "Error reporting",
-        "telemetry_body": "Grognard does not automatically send error or crash reports. To report a problem, use the project's GitHub Issues: https://github.com/grognard/grognard/issues.",
+        "telemetry_body": "Grognard does not automatically send error or crash reports. To report a problem, use the project's GitHub Issues: https://github.com/grognard-xml/grognard/issues.",
         "configure_title": "Where to configure networked features",
         "goto_profile_github": "Profile — encoder name and GitHub / leaderboard",
         "goto_entity_database": "Entity database — folder, cloud backup, cross-device sync",

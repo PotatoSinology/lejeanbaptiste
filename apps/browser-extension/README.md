@@ -21,7 +21,7 @@ the maroon tile fills the toolbar slot. Regenerate with
 
 ## Install (end users)
 
-Download the extension zips from the [same GitHub release](https://github.com/grognard/grognard/releases/latest) as the desktop app (`grognard-browser-extension-chromium-*.zip` and `grognard-browser-extension-firefox-*.zip`). Step-by-step instructions for every browser and OS are in the main [readme.md](../../readme.md#browser-extension-corpus-import).
+Download the extension zips from the [same GitHub release](https://github.com/grognard-xml/grognard/releases/latest) as the desktop app (`grognard-browser-extension-chromium-*.zip` and `grognard-browser-extension-firefox-*.zip`). Step-by-step instructions for every browser and OS are in the main [readme.md](../../readme.md#browser-extension-corpus-import).
 
 ## Install from a git checkout (developers)
 

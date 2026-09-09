@@ -1,4 +1,4 @@
-/** Mirrors grognard/plugins plugin.manifest.json (manifestVersion 1.0.0). */
+/** Mirrors grognard-xml/plugins plugin.manifest.json (manifestVersion 1.0.0). */
 
 export const PLUGIN_MANIFEST_FILENAME = 'plugin.manifest.json';
 

@@ -3,7 +3,7 @@
   "publish": [
     {
       "provider": "github",
-      "owner": "grognard",
+      "owner": "grognard-xml",
       "repo": "grognard"
     }
   ],

@@ -33,7 +33,7 @@ Every release asset, including `SHA256SUMS`, carries a GitHub build
 provenance attestation binding it to the exact commit and workflow run that
 produced it. Verify with the [GitHub CLI](https://cli.github.com/):
 
-    gh attestation verify <file> --repo grognard/grognard
+    gh attestation verify <file> --repo grognard-xml/grognard
 
 ### Checksums
 

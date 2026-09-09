@@ -13,7 +13,7 @@
 
 set -e
 
-APT_REPO_URL="https://grognard.github.io/grognard/apt"
+APT_REPO_URL="https://grognard-xml.github.io/grognard/apt"
 APT_SUITE="stable"
 APT_COMPONENT="main"
 KEYRING="/usr/share/keyrings/grognard.asc"
@@ -49,7 +49,7 @@ done
 
 if [ -z "$KEY_SRC" ]; then
   echo "grognard: bundled apt signing key not found; skipping apt repository setup." >&2
-  echo "grognard: see https://grognard.github.io/grognard/ for manual instructions." >&2
+  echo "grognard: see https://grognard-xml.github.io/grognard/ for manual instructions." >&2
   exit 0
 fi
 

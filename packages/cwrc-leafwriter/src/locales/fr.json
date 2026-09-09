@@ -810,7 +810,7 @@
         "leaderboard_title": "Envoi au classement",
         "leaderboard_body": "Si vous choisissez de participer au classement, Grognard transmet les informations nécessaires pour associer votre progression à votre identité GitHub vérifiée et afficher une fiche de classement. La nature exacte des indicateurs peut évoluer. Le contenu de vos textes, de vos fichiers XML et de votre base d’entités n’est pas envoyé.",
         "telemetry_title": "Rapports d’erreur",
-        "telemetry_body": "Grognard n’envoie pas automatiquement de rapports d’erreur ou de plantage. Pour signaler un problème, utilisez les Issues du projet sur GitHub : https://github.com/grognard/grognard/issues.",
+        "telemetry_body": "Grognard n’envoie pas automatiquement de rapports d’erreur ou de plantage. Pour signaler un problème, utilisez les Issues du projet sur GitHub : https://github.com/grognard-xml/grognard/issues.",
         "configure_title": "Où configurer les fonctions en réseau",
         "goto_profile_github": "Profil — nom d’encodeur et GitHub / classement",
         "goto_entity_database": "Base d’entités — dossier, sauvegarde cloud, synchronisation",

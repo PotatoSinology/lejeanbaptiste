@@ -1,6 +1,6 @@
 /** GitHub Release registry for installable Grognard plugin archives. */
 export const GROGNARD_PLUGIN_REGISTRY = {
-  releaseDownloadBaseUrl: 'https://github.com/grognard/plugins/releases/latest/download',
+  releaseDownloadBaseUrl: 'https://github.com/grognard-xml/plugins/releases/latest/download',
 } as const;
 
 export const PLUGINS_INDEX_FILENAME = 'plugins-index.json';

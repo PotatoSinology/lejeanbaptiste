@@ -16,7 +16,7 @@ export const server = express();
 // only forked by the desktop shell for localhost use), those users must be able
 // to obtain the running version's source. Advertise it on every response and
 // redirect `/source` to the repository.
-const SOURCE_REPOSITORY = 'https://github.com/grognard/grognard';
+const SOURCE_REPOSITORY = 'https://github.com/grognard-xml/grognard';
 server.use((_req, res, next) => {
   res.setHeader('X-Source-Repository', SOURCE_REPOSITORY);
   next();

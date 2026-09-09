@@ -306,13 +306,13 @@
 
 ### CBETA import
 
-- Wired end-to-end **CBETA import** (File → Import from CBETA…): host UI, `cbetaImportXml.ts` TEI wrapper, CBETA P5 schema bundle (`cbeta_p5.rng` / `.sch` + `cbeta.css`), and project bootstrap for CBETA-family targets. Requires the `cbeta-import` plugin from the [plugins](https://github.com/grognard/plugins) repo (Tools → Plugins).
+- Wired end-to-end **CBETA import** (File → Import from CBETA…): host UI, `cbetaImportXml.ts` TEI wrapper, CBETA P5 schema bundle (`cbeta_p5.rng` / `.sch` + `cbeta.css`), and project bootstrap for CBETA-family targets. Requires the `cbeta-import` plugin from the [plugins](https://github.com/grognard-xml/plugins) repo (Tools → Plugins).
 - CBETA import dialog: fixed 720×700 layout (no resize while searching), **Split by section (mulu)** default for TEI-ALL projects (juan for CBETA-schema), plus **Clean import** and **Strip Taishō line breaks** checkboxes. Cross-family import now consumes nested `cb:mulu` into `<head>` (fixes TEI-ALL validation) and maps invalid `@place` on `<p>` to `@rend`. Dialog compacted: split-by dropdown, merged clean-import label, progress while importing/syncing.
 - Plugin-side mulu split fixes: omit the split-marker `cb:mulu` from slice bodies (no duplicate `<head>` with the host's section wrapper), fold content-less headings into the next slice, and strip redundant leading `<head>` when it repeats the slice title.
 
 ### BDRC import
 
-- Wired **BDRC import** (File → Import from BDRC… and browser extension): host UI, `bdrcImportXml.ts`, and plugin bridge. Requires the `bdrc-import` plugin from the [plugins](https://github.com/grognard/plugins) repo.
+- Wired **BDRC import** (File → Import from BDRC… and browser extension): host UI, `bdrcImportXml.ts`, and plugin bridge. Requires the `bdrc-import` plugin from the [plugins](https://github.com/grognard-xml/plugins) repo.
 
 ### Browser extension (corpus import)
 

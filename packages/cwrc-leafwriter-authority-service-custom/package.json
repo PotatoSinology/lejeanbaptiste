@@ -9,13 +9,13 @@
     "lookup",
     "LEAF-Writer"
   ],
-  "homepage": "https://github.com/grognard/grognard",
+  "homepage": "https://github.com/grognard-xml/grognard",
   "bugs": {
-    "url": "https://github.com/grognard/grognard/issues"
+    "url": "https://github.com/grognard-xml/grognard/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/grognard/grognard.git"
+    "url": "https://github.com/grognard-xml/grognard.git"
   },
   "publishConfig": {
     "access": "public"

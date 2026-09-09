@@ -53,14 +53,14 @@ describe('AGPL-3.0 s.13 source offer', () => {
   it('GET /source redirects to the repository, unauthenticated', async () => {
     const res = await fetch('/source');
     expect(res.status).toBe(302);
-    expect(res.headers.get('location')).toContain('github.com/grognard/grognard');
+    expect(res.headers.get('location')).toContain('github.com/grognard-xml/grognard');
     expect(res.headers.get('location')).toContain('workers/entity-sync');
   });
 
   it('advertises the source repository header on every response', async () => {
     for (const path of ['/', '/source', '/sync/pull']) {
       const res = await fetch(path);
-      expect(res.headers.get('x-source-repository')).toBe('https://github.com/grognard/grognard');
+      expect(res.headers.get('x-source-repository')).toBe('https://github.com/grognard-xml/grognard');
       expect(res.headers.get('x-license')).toBe('AGPL-3.0-only');
     }
   });
@@ -69,6 +69,6 @@ describe('AGPL-3.0 s.13 source offer', () => {
     const res = await fetch('/');
     const body = (await res.json()) as { license: string; source: string };
     expect(body.license).toBe('AGPL-3.0-only');
-    expect(body.source).toContain('github.com/grognard/grognard');
+    expect(body.source).toContain('github.com/grognard-xml/grognard');
   });
 });

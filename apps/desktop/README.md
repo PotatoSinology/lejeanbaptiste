@@ -171,7 +171,7 @@ runtime (see above) before electron-builder assembles the installer.
 
 ## Asset sources
 
-Artwork and spoiler-protected game assets come from the private [visual_design](https://github.com/grognard/visual_design) repo. Run `npm run visual-design:sync` (from the repo root) to refresh the mirrored files below.
+Artwork and spoiler-protected game assets come from the private [visual_design](https://github.com/grognard-xml/visual_design) repo. Run `npm run visual-design:sync` (from the repo root) to refresh the mirrored files below.
 
 Tracked here as mirrored or generated assets:
 

@@ -4,7 +4,7 @@
  */
 
 export const FETCH_HEADERS = {
-  'User-Agent': 'Grognard/0.1 (+https://github.com/grognard/grognard)',
+  'User-Agent': 'Grognard/0.1 (+https://github.com/grognard-xml/grognard)',
 };
 
 const WIKISOURCE_HOST_RE = /^(?:[a-z-]+\.)?wikisource\.org$/i;

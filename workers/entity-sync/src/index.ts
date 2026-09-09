@@ -45,7 +45,7 @@ export interface Env {
  * (`x-source-repository`), `GET /source` redirects to it, and `GET /` reports
  * it in the body. Keep `SOURCE_REPOSITORY` pointing at the canonical repo.
  */
-const SOURCE_REPOSITORY = 'https://github.com/grognard/grognard';
+const SOURCE_REPOSITORY = 'https://github.com/grognard-xml/grognard';
 const LICENSE = 'AGPL-3.0-only';
 
 const sourceUrl = (env: Env): string => {

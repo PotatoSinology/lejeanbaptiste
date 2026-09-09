@@ -4,9 +4,9 @@
 // (see AchievementsDialog.tsx's submitToLeaderboard) - no separate auth flow.
 
 export const FLAG_OF_COMMITMENT_REPOS = [
-  'grognard/authoritypacks',
-  'grognard/grognard',
-  'grognard/plugins',
+  'grognard-xml/authoritypacks',
+  'grognard-xml/grognard',
+  'grognard-xml/plugins',
 ] as const;
 
 const GITHUB_API = 'https://api.github.com';

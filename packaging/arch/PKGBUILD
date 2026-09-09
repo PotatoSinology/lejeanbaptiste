@@ -3,7 +3,7 @@ pkgver=0.0.1
 pkgrel=1
 pkgdesc="Grognard — desktop XML editor"
 arch=('x86_64' 'aarch64')
-url="https://github.com/grognard/grognard"
+url="https://github.com/grognard-xml/grognard"
 license=('GPL2')
 # The bundled Electron binary and python-build-standalone interpreter are
 # prebuilt third-party artifacts, not compiled by this package. Running

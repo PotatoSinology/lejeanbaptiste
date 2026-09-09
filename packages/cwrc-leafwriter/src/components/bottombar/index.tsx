@@ -63,7 +63,7 @@ export const BottomBar = () => {
             <Link
               color="textSecondary"
               variant="caption"
-              href="https://github.com/grognard/grognard/issues/new"
+              href="https://github.com/grognard-xml/grognard/issues/new"
               target="_blank"
             >
               {t('LW.Bugs')} / {t('LW.Requests')}
