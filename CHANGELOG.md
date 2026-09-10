@@ -500,7 +500,11 @@ CBETA and similar texts often split a running string across milestones, e.g. `ã€
 - **Central sync (D1) now carries `thing` entities.** Previously `thing` entities were pushed nowhere â€” `entitySync.ts` explicitly skipped them, and the Worker/D1 schema would have rejected them regardless. The client's sync type, the Worker's protocol validator, and the D1 `central_entities.kind` CHECK constraint are all updated; the live migration ran without touching any of the existing synced rows.
 - **Fixed a latent cross-device sync bug for `office` entities.** Pulling a remote `office` entity onto another device silently failed to apply: the wrapper used to re-import a pulled entity locally shares its element (`<listOrg>`) with `org`, distinguished only by a `type="offices"` attribute the wrapper was never setting, so the entity came back in as `org` and was dropped by the kind-mismatch guard on the write side. Fixed alongside the `thing` sync wiring, since it's the same three-line map.
 
-## Unreleased
+## v0.1.1-beta.1
+
+### Complete refactor
+
+- Product name changed to Grognard. All branding and URLs updated.
 
 ### Plugins
 
