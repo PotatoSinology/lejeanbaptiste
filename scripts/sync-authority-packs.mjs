@@ -61,9 +61,7 @@ const destRoot = process.argv[2] ? path.resolve(process.argv[2], 'authority-pack
 
 if (!fs.existsSync(defaultSource)) {
   console.error(`Source packs not found: ${defaultSource}`);
-  console.error(
-    'Run: cd "../authoritypacks" && npm run compile:cbdb && npm run compile:dila',
-  );
+  console.error('Run: cd "../authoritypacks" && npm run compile:cbdb && npm run compile:dila');
   console.error(
     'Optional Wikidata: npm run wikidata:compile-all (Tang/Ming/Qing under packs/wikidata/)',
   );

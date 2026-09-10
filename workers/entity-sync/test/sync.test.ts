@@ -60,7 +60,9 @@ describe('AGPL-3.0 s.13 source offer', () => {
   it('advertises the source repository header on every response', async () => {
     for (const path of ['/', '/source', '/sync/pull']) {
       const res = await fetch(path);
-      expect(res.headers.get('x-source-repository')).toBe('https://github.com/grognard-xml/grognard');
+      expect(res.headers.get('x-source-repository')).toBe(
+        'https://github.com/grognard-xml/grognard',
+      );
       expect(res.headers.get('x-license')).toBe('AGPL-3.0-only');
     }
   });

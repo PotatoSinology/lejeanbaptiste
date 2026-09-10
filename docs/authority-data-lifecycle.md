@@ -227,12 +227,12 @@ Grognard desktop app **only downloads** this artifact for tier 1. Compile script
 
 Historical China **places** — complements CBDB places and DILA. See [authority-packs-planning.md](authority-packs-planning.md) §4.5.
 
-| Aspect    | Status                                                                                                                                                                                                                                        |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Aspect    | Status                                                                                                                                                                                                                                  |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Pack      | `authority-packs/chgis/places.ndjson`, compiled in `authoritypacks` and shipped as part of the `chinese` profile bundle                                                                                                                 |
 | Delivery  | **Tier 1, pre-compiled** — same GitHub-release pack registry as CBDB/DILA/Wikidata. Compiled once locally by a maintainer per CHGIS version bump and checked into `authoritypacks` via Git LFS (not compiled on the end user's machine) |
 | Crosswalk | CBDB `CHGIS_PT_ID` (exact-id match) and DILA (name+geo fuzzy match); both crosswalks are built once locally and checked in alongside the pack — see `authoritypacks/chgis/README.md`                                                    |
-| UI        | No dedicated CHGIS UI — folded into the generic offline-authorities block (`DesktopOfflineAuthorities`) and its manifest-driven attributions disclosure, same as every other pack source                                                      |
+| UI        | No dedicated CHGIS UI — folded into the generic offline-authorities block (`DesktopOfflineAuthorities`) and its manifest-driven attributions disclosure, same as every other pack source                                                |
 
 ---
 

@@ -191,14 +191,14 @@ Scope of keyed entities for Phase 2 seed: **active document / selection** for v1
 
 ## Related code (current)
 
-| Piece                                          | Role                                                                                |
-| ---------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `autoTagging/nameTypes.ts`                     | Canonical types; `preferCanonicalFamilyGiven` for pack 姓/名                        |
-| `autoTagging/authoritySettings.ts`             | Persists policy map + custom types; legacy `excludedNameTypes` migration            |
-| `autoTagging/nameTypeTaggingPolicy.ts`         | Three-bucket model, presets, phase-1 seed filtering                                 |
-| `autoTagging/entityOps.ts`                     | `taggableEntityNames`, `setNameType`                                                |
-| `autoTagging/disambiguationCandidates.ts`      | Pack `typedNames` on candidates; `collectTypedNamesForCandidate`                    |
-| `autoTagging/integration.ts`                   | Disambiguation `resolveMention` — Phase B link enrichment                           |
-| `autoTagging/lookupResolve.ts`                 | Attributes Lookup mint/link — pack `names[]` enrichment                             |
-| `autoTagging/ownDatabaseCandidates.ts`         | PEDB→candidates; ignores name types today                                           |
-| `authoritypacks/cbdb/personAltNames.mjs` | `buildPersonNamesFromAlts`: 姓+字 in searchStrings; bare 字/名/姓 in `names[]` only |
+| Piece                                     | Role                                                                                |
+| ----------------------------------------- | ----------------------------------------------------------------------------------- |
+| `autoTagging/nameTypes.ts`                | Canonical types; `preferCanonicalFamilyGiven` for pack 姓/名                        |
+| `autoTagging/authoritySettings.ts`        | Persists policy map + custom types; legacy `excludedNameTypes` migration            |
+| `autoTagging/nameTypeTaggingPolicy.ts`    | Three-bucket model, presets, phase-1 seed filtering                                 |
+| `autoTagging/entityOps.ts`                | `taggableEntityNames`, `setNameType`                                                |
+| `autoTagging/disambiguationCandidates.ts` | Pack `typedNames` on candidates; `collectTypedNamesForCandidate`                    |
+| `autoTagging/integration.ts`              | Disambiguation `resolveMention` — Phase B link enrichment                           |
+| `autoTagging/lookupResolve.ts`            | Attributes Lookup mint/link — pack `names[]` enrichment                             |
+| `autoTagging/ownDatabaseCandidates.ts`    | PEDB→candidates; ignores name types today                                           |
+| `authoritypacks/cbdb/personAltNames.mjs`  | `buildPersonNamesFromAlts`: 姓+字 in searchStrings; bare 字/名/姓 in `names[]` only |

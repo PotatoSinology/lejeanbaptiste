@@ -42,9 +42,7 @@ export const runNodeScript = async (
 ): Promise<void> => {
   const nodeModules = path.join(cwd, 'node_modules');
   if (!fs.existsSync(nodeModules)) {
-    throw new Error(
-      `Run npm install in the authoritypacks folder (${cwd}) before compiling.`,
-    );
+    throw new Error(`Run npm install in the authoritypacks folder (${cwd}) before compiling.`);
   }
 
   await execFileAsync(process.execPath, [scriptPath, ...args], {

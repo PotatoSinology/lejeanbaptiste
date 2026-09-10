@@ -24,15 +24,15 @@ Active product TODOs live in the root [`readme.md`](../readme.md) (`## Waiting` 
 
 ## Architecture & implemented reference
 
-| Doc                                                                          | Topic                                                |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------- |
-| [Auto-tagging.md](Auto-tagging.md)                                           | Auto-tagging / disambiguation architecture           |
-| [Auto-tagging-phases.md](Auto-tagging-phases.md)                             | Phase checklist (companion to above)                 |
-| [schema_handling.md](schema_handling.md)                                     | Project schema behaviour (phases 1–6)                |
-| [grognard-tei-extensions.md](grognard-tei-extensions.md)                     | TEI extensions used by the app                       |
-| [sanmiao-dates-schema.md](sanmiao-dates-schema.md)                           | East Asian date schema                               |
-| [entity-data-provenance.md](entity-data-provenance.md)                       | Entity `origin` / `source` / `status`                |
-| [entity-registry-merges-and-splits.md](entity-registry-merges-and-splits.md) | Merge / split behaviour                              |
+| Doc                                                                          | Topic                                          |
+| ---------------------------------------------------------------------------- | ---------------------------------------------- |
+| [Auto-tagging.md](Auto-tagging.md)                                           | Auto-tagging / disambiguation architecture     |
+| [Auto-tagging-phases.md](Auto-tagging-phases.md)                             | Phase checklist (companion to above)           |
+| [schema_handling.md](schema_handling.md)                                     | Project schema behaviour (phases 1–6)          |
+| [grognard-tei-extensions.md](grognard-tei-extensions.md)                     | TEI extensions used by the app                 |
+| [sanmiao-dates-schema.md](sanmiao-dates-schema.md)                           | East Asian date schema                         |
+| [entity-data-provenance.md](entity-data-provenance.md)                       | Entity `origin` / `source` / `status`          |
+| [entity-registry-merges-and-splits.md](entity-registry-merges-and-splits.md) | Merge / split behaviour                        |
 | [authority-extraction.md](authority-extraction.md)                           | Pointer to the sibling **authoritypacks** repo |
 
 ---
